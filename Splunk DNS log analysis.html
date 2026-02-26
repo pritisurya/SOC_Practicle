@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Splunk Basics – DNS Log Analysis</title>
+</head>
+<body>
+
+    <h1>Lab Title: Splunk Basics – DNS Log Analysis</h1>
+
+    <h2>Objective</h2>
+    <p>In this lab, you will:</p>
+    <ul>
+        <li>Learn how to ingest and analyze DNS logs in Splunk.</li>
+        <li>Extract useful information such as DNS query types, source hosts, and common destinations.</li>
+        <li>Practice building basic SPL (Search Processing Language) queries to investigate DNS activity.</li>
+    </ul>
+
+    <h2>Lab Setup</h2>
+    <ul>
+        <li>Splunk already installed and accessible.</li>
+        <li>Data Source: JSON-formatted Zeek DNS logs.</li>
+        <li>Log File: Download the file and place it in a directory accessible to Splunk for ingestion.</li>
+    </ul>
+
+    <h2>Steps to Upload DNS Log into Splunk</h2>
+    <ol>
+        <li>Go to Splunk Web → Settings &gt; Add Data.</li>
+        <li>Choose <strong>Upload</strong> and select the file <strong>dns.log</strong>.</li>
+        <li>Set Source type: <strong>json</strong> or create a custom source type <strong>dns</strong>.</li>
+        <li>Choose index <strong>main</strong> or create a new index like <strong>dns_lab</strong>.</li>
+        <li>Finish the upload and confirm indexing.</li>
+    </ol>
+
+    <h2>Lab Tasks</h2>
+
+    <h3>Task 1: Identify the most frequently queried domain names</h3>
+    <pre><code>index=dns_lab sourcetype="json"
+| stats count by query
+| sort -count</code></pre>
+
+    <h3>Task 2: Find the most active user IPs generating DNS traffic</h3>
+    <pre><code>index=dns_lab sourcetype="json"
+| stats count by "id.orig_h"
+| sort -count</code></pre>
+
+    <h3>Task 3: Breakdown of DNS query types (A, AAAA, CNAME, PTR)</h3>
+    <pre><code>index=dns_lab sourcetype="json"
+| stats count by qtype</code></pre>
+
+    <h2>Submission</h2>
+    <p>Submit screenshots of the following:</p>
+    <ul>
+        <li>SPL query and result for Task 1.</li>
+        <li>SPL query and result for Task 2.</li>
+        <li>SPL query and result for Task 3.</li>
+    </ul>
+
+</body>
+</html>
