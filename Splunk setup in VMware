@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Install and Configure Splunk on Kali Linux</title>
+</head>
+<body>
+
+    <h1>Install and Configure Splunk on Kali Linux</h1>
+
+    <h2>Objective</h2>
+    <p>
+        Install and configure Splunk Enterprise on an Ubuntu machine to start collecting and analyzing security logs.
+    </p>
+
+    <h2>Lab Requirements</h2>
+    <ul>
+        <li><strong>System:</strong> Kali Linux 2025.4 (Server or Desktop)</li>
+        <li><strong>Tools Required:</strong>
+            <ul>
+                <li>Splunk Enterprise (Free version for local setup)</li>
+                <li>Terminal (Command Line Access)</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Installation Steps</h2>
+
+    <h3>Step 1: Download Splunk</h3>
+    <p>Open Terminal and run:</p>
+
+    <pre><code>wget -O splunk-9.3.0-51ccf43db5bd-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.3.0/linux/splunk-9.3.0-51ccf43db5bd-linux-2.6-amd64.deb"</code></pre>
+
+    <p>After downloading, install Splunk:</p>
+
+    <pre><code>sudo dpkg -i splunk-9.3.0-51ccf43db5bd-linux-2.6-amd64.deb</code></pre>
+
+    <h3>Step 2: Enable and Start Splunk</h3>
+
+    <p>Go to the Splunk installation directory:</p>
+
+    <pre><code>cd /opt/splunk/bin</code></pre>
+
+    <p>Enable Splunk to start at boot and accept the license:</p>
+
+    <pre><code>sudo ./splunk enable boot-start --accept-license</code></pre>
+
+    <p>Start Splunk:</p>
+
+    <pre><code>sudo ./splunk start</code></pre>
+
+    <p>
+        When prompted, create an admin username and password.
+    </p>
+
+    <h3>Step 3: Access Splunk Web</h3>
+
+    <p>Open a browser and visit:</p>
+
+    <pre><code>http://&lt;your-server-ip&gt;:8000</code></pre>
+
+    <p>
+        Log in using the admin credentials you created.
+    </p>
+
+    <h2>Result</h2>
+    <ul>
+        <li>Splunk successfully installed on Ubuntu</li>
+        <li>Boot-start enabled</li>
+        <li>Web interface accessible</li>
+    </ul>
+
+    <h2>Submission</h2>
+    <p>
+        Share a screenshot of the Splunk Web interface.
+    </p>
+
+</body>
+</html>
+
